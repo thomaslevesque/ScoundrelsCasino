@@ -71,7 +71,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="XamlAnimatedGif, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XamlAnimatedGif.1.0.0-beta3\lib\net45\XamlAnimatedGif.dll</HintPath>
+      <HintPath>..\packages\XamlAnimatedGif.1.0.0-beta4\lib\net45\XamlAnimatedGif.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -114,7 +114,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -20,20 +20,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="70" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition Width="75" />
         </Grid.ColumnDefinitions>
         <Image Name="rouletteAnimation"
-               Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"
-               Height="300" Width="300"
-               gif:AnimationBehavior.SourceUri="Images/roulette.gif"
-               Visibility="{Binding IsSpinning, Converter={StaticResource boolToVis}}"/>
-        <ContentControl Name="lblNumber" FontSize="120"
                Grid.Row="0" Grid.Column="0"
-               Width="200" Height="200"
+               Height="300" Width="300"
+               gif:AnimationBehavior.AutoStart="False"
+               gif:AnimationBehavior.SourceUri="Images/roulette.gif" />
+        <ContentControl Name="lblNumber" FontSize="96"
+               Grid.Row="0" Grid.Column="0"
+               Width="150" Height="150"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                Content="{Binding Number}"
                Visibility="{Binding IsNotSpinning, Converter={StaticResource boolToVis}}" />

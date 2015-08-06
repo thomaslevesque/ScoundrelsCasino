@@ -1,19 +1,43 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
 using Roulette.ViewModel;
+using XamlAnimatedGif;
 
 namespace Roulette
 {
 
     public partial class MainWindow
     {
+        private readonly MainWindowViewModel _viewModel;
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+
+            _viewModel = new MainWindowViewModel();
+            _viewModel.PropertyChanged += ViewModelOnPropertyChanged;
+
+            DataContext = _viewModel;
+        }
+
+        private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(MainWindowViewModel.IsSpinning))
+            {
+                var animator = AnimationBehavior.GetAnimator(rouletteAnimation);
+                if (animator != null)
+                {
+                    if (_viewModel.IsSpinning)
+                        animator.Play();
+                    else
+                        animator.Pause();
+                }
+            }
         }
 
 
@@ -48,7 +72,7 @@ namespace Roulette
                 int seed;
                 if (int.TryParse(txtCheat.Text, out seed))
                 {
-                    ((MainWindowViewModel) DataContext).SetSeed(seed);
+                    _viewModel.SetSeed(seed);
                 }
                 txtCheat.IsEnabled = false;
                 txtCheat.Opacity = 0;
