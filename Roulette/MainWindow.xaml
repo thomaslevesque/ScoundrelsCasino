@@ -1,13 +1,14 @@
 ﻿<Window x:Class="Roulette.MainWindow"
-                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                  xmlns:gif="clr-namespace:XamlAnimatedGif;assembly=XamlAnimatedGif"
-                  xmlns:vm="clr-namespace:Roulette.ViewModel"
-                  mc:Ignorable="d"
-                  Height="400" Width="525" ResizeMode="NoResize"
-                  Title="Lucky Deuce Casino Roulette">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="clr-namespace:XamlAnimatedGif;assembly=XamlAnimatedGif"
+        xmlns:vm="clr-namespace:Roulette.ViewModel"
+        mc:Ignorable="d"
+        Height="400" Width="525" ResizeMode="NoResize"
+        Title="Lucky Deuce Casino Roulette"
+        KeyUp="MainWindow_OnKeyUp">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="boolToVis" />
         <DataTemplate DataType="{x:Type vm:NumberViewModel}">
@@ -55,7 +56,17 @@
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
-
+        <TextBox Name="txtCheat"
+                 Grid.Row="0" Grid.Column="0"
+                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                 BorderThickness="0"
+                 Width="50"
+                 Opacity="0"
+                 IsEnabled="False"
+                 KeyDown="txtCheat_OnKeyDown"
+                 LostFocus="txtCheat_OnLostFocus">
+            
+        </TextBox>
     </Grid>
 
 </Window>

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
@@ -8,7 +9,7 @@ namespace Roulette.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private readonly RouletteGenerator _generator;
+        private RouletteGenerator _generator;
 
         public MainWindowViewModel()
         {
@@ -64,6 +65,11 @@ namespace Roulette.ViewModel
                 IsSpinning = false;
                 _spinCommand.RaiseCanExecuteChanged();
             }
+        }
+
+        public void SetSeed(int seed)
+        {
+            _generator = new RouletteGenerator(new Random(seed));
         }
     }
 }

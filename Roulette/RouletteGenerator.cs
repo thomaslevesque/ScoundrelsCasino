@@ -13,12 +13,18 @@ namespace Roulette
 
         private const int LongestRunAllowed = 2;
 
-        private readonly Random _random = new Random();
+        private readonly Random _random;
         private readonly List<int> _lastIndexes = new List<int>();
         private readonly IDictionary<int, int> _lastOccurrences =
             Enumerable.Range(0, _numbers.Length).ToDictionary(i => i, i => -1);
 
         private int _turn;
+
+        public RouletteGenerator(Random random = null)
+        {
+            _random = random ?? new Random();
+        }
+
 
         public string Next()
         {
